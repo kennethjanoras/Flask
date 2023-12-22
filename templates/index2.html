@@ -10,10 +10,16 @@
 
         <div class="col md-12">
 
+         <input type="text" id="searchInput" class="form-control" placeholder="Search by Name" style="
+         text-align: center;
+    padding: revert-layer">
+
 
 
             <h2>Student List <button type="button" class="btn btn-success  pull-right" data-toggle="modal" data-target="#myModal">Add Student Data</button></h2>
+            
 
+         
 
 
 
@@ -79,6 +85,7 @@
                 <div id="modaledit{{row.0}}" class="modal fade" role="dialog">
 
 
+                  
    <div class="modal-dialog">
 
 
@@ -292,3 +299,14 @@
 <script type="text/javascript" src="{{url_for('static', filename='js/jquery-3.2.1.min.js') }}"></script>
 
 <script type="text/javascript" src="{{url_for('static', filename = 'js/bootstrap.min.js')}}"></script>
+
+<script type="text/javascript">
+   $(document).ready(function () {
+       $('#searchInput').on('keyup', function () {
+           var value = $(this).val().toLowerCase();
+           $('table tbody tr').filter(function () {
+               $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+           });
+       });
+   });
+</script>
